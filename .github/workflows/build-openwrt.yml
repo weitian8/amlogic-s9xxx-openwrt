@@ -77,6 +77,9 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+    
+    - name: Update clean
+      run: cd openwrt && ./scripts/feeds clean
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -159,7 +162,7 @@ jobs:
         sudo rm -rf openwrt && sync
         sudo rm -rf /workdir && sync
         sudo chmod +x make
-        sudo ./make -d -b s905x3_s905x2_s905x_s905d_s922x_s912 -k 5.10.23.TF_5.4.105
+        sudo ./make -d -b s905d -k 5.4.105
         cd out/ && sudo gzip *.img
         cp -f ../openwrt-armvirt/*.tar.gz . && sync
         echo "FILEPATH=$PWD" >> $GITHUB_ENV

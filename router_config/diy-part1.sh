@@ -1,19 +1,19 @@
 #!/bin/bash
-#========================================================================================================================
-# https://github.com/ophub/amlogic-s9xxx-openwrt
-# Description: Automatically Build OpenWrt for Amlogic S9xxx STB
-# Function: Diy script (Before Update feeds, Modify the default IP, hostname, theme, add/remove software packages, etc.)
-# Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
-# Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
-#========================================================================================================================
+#
+# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# File name: diy-part1.sh
+# Description: OpenWrt DIY script part 1 (Before Update feeds)
+#
 
 # Uncomment a feed source
-sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
-# sed -i 's/\"#src-git\"/\"src-git\"/g' feeds.conf.default
+sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-# sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-
-# other
-# rm -rf package/lean/{samba4,luci-app-samba4,luci-app-ttyd}
-
+#sed -i '$a src-git helloworld https://github.com/Mattraks/helloworld' feeds.conf.default
+sed -i '$a src-git lienol https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+sed -i '$a src-git OpenClash https://github.com/vernesong/OpenClash' feeds.conf.default

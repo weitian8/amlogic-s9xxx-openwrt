@@ -11,10 +11,11 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/10.1.1.254/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.2/g' package/base-files/files/bin/config_generate
 
 # 去除默认主题
-sed -i 's/+luci-theme-bootstrap/ /g' feeds/luci/collections/luci/Makefile
+#sed -i 's/+luci-theme-bootstrap/ /g' feeds/luci/collections/luci/Makefile
+svn co https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-theme-opentomcat
 
 # 添加cpufreq
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
